@@ -1,0 +1,87 @@
+# Platform Starter Kit — Roadmap
+
+This roadmap defines the high-level phases for building a realistic, IaC-driven,
+multi-environment platform inspired by modern DevOps best practices and
+Kief Morris’ *Infrastructure as Code* principles.
+
+The roadmap is intentionally stable.  
+Individual tasks live in `docs/tasks/` and evolve incrementally.
+
+---
+
+## Phase 0 — Foundation & Repo Baseline
+- Finalize initial repo layout.
+- Add minimal documentation (architecture, delivery pipeline).
+- Prepare local tooling: kind, kubectl, helm.
+- Validate Terraform directory structure and globals.
+
+---
+
+## Phase 1 — Local Kubernetes Platform (kind)
+- Create kind cluster configuration.
+- Install ArgoCD locally.
+- Install Observability stack locally (Prometheus, Grafana).
+- Ensure GitOps manifests work locally before touching AWS.
+- Establish a fast inner dev loop.
+
+---
+
+## Phase 2 — Terraform Core Scaffolding
+- Configure Terraform remote backends (S3 + DynamoDB) for dev/prod.
+- Define shared provider configuration (`globals/`).
+- Create `plan-*` / `apply-*` / `destroy-*` scripts.
+- Sanity-check Terraform plan/apply workflows (empty infra).
+
+---
+
+## Phase 3 — Core Infra Modules (VPC / IAM / EKS)
+- Implement VPC module (minimal, cost-conscious).
+- Implement IAM module (cluster, node groups, optional admin roles).
+- Implement EKS module (cluster + one managed node group).
+- Stitch modules together in `accounts/dev` and validate end-to-end.
+- Confirm kubectl connectivity to EKS.
+
+---
+
+## Phase 4 — GitOps Bootstrap (ArgoCD via Terraform)
+- Implement ArgoCD bootstrap module (Helm or manifests).
+- Configure the kubernetes provider inside Terraform.
+- Install ArgoCD automatically during infra apply.
+- Point ArgoCD App-of-Apps to `gitops/apps/root`.
+
+---
+
+## Phase 5 — GitOps Tree + Demo Application
+- Define App-of-Apps structure.
+- Add platform apps (Prometheus, Grafana, Loki).
+- Add demo service (Dockerfile + Helm chart + ArgoCD Application).
+- Verify automatic sync in dev environment.
+
+---
+
+## Phase 6 — CI/CD Automation (GitHub Actions)
+- Terraform pipelines for dev/prod.
+- Build & push demo-api container images.
+- GitOps-based image tag bump workflow.
+- Manual promotion flow for prod.
+
+---
+
+## Phase 7 — Hardening, Cost Controls, Refinements
+- Add basic network policies.
+- Add resource limits + HPA.
+- Introduce spot node groups (optional).
+- Add TTL tags for easy cleanup.
+- Improve ops notes and runbooks.
+
+---
+
+## Phase 8 — Optional Extensions
+- Add external-dns + cert-manager.
+- Add Loki + Tempo for full observability.
+- Add example app #2.
+- Introduce SSO / OIDC integration.
+
+---
+
+Roadmap Reviewed: _2025-12-11_  
