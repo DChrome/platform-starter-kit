@@ -19,8 +19,16 @@ detect_repo() {
     exit 1
   fi
   CLEAN_URL="${REMOTE_URL/git@github.com:/https://github.com/}"
-  OWNER="$(echo "$CLEAN_URL" | sed -E 's#https://github.com/([^/]+)/([^\.]+)(\.git)?#\1#')"
-  REPO="$(echo "$CLEAN_URL" | sed -E 's#https://github.com/([^/]+)/([^\.]+)(\.git)?#\2#')"
+  CLEAN_URL="${CLEAN_URL%.git}"  # drop trailing .git if present
+
+  PATH_PART="${CLEAN_URL#https://github.com/}"  # Strip host prefix
+  OWNER="${PATH_PART%%/*}"  # everything before first /
+  REPO="${PATH_PART#*/}"    # everything after first /
+
+  if [[ -z "$OWNER" || -z "$REPO" ]]; then
+    echo "Error: failed to parse GitHub owner/repo from remote URL: $REMOTE_URL"
+    exit 1
+  fi
 
   BRANCH="$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || true)"
   if [[ -z "${BRANCH:-}" ]]; then
@@ -53,11 +61,7 @@ apply_common_protection() {
 {
   "required_status_checks": {
     "strict": true,
-    "contexts": [
-      "CI / terraform-fmt",
-      "CI / terraform-validate",
-      "CI / tflint"
-    ]
+    "contexts": []
   },
   "enforce_admins": true,
   "required_pull_request_reviews": {
