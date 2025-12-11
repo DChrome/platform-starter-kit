@@ -9,7 +9,6 @@ auto-detect the repository owner, name, and default branch from the local Git cl
 ### `bootstrap-base.sh`
 Applies a **baseline production profile**:
 - Protects the default branch (PRs only, admins included)
-- Requires reviews and status checks
 - Enforces resolved conversations
 - Configures merge strategy (squash-only by default, adjust as needed)
 
