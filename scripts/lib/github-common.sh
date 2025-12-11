@@ -75,12 +75,12 @@ EOF
 }
 
 configure_merge_policy() {
-  # Example: allow only squash, disable rebase & merge commits
+  # Example: allow squash and merge commits
   run_gh_api \
     --method PATCH \
     "repos/$OWNER/$REPO" \
     -f allow_squash_merge=true \
-    -f allow_merge_commit=false \
+    -f allow_merge_commit=true \
     -f allow_rebase_merge=false
 }
 

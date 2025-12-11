@@ -10,7 +10,7 @@ auto-detect the repository owner, name, and default branch from the local Git cl
 Applies a **baseline production profile**:
 - Protects the default branch (PRs only, admins included)
 - Enforces resolved conversations
-- Configures merge strategy (squash-only by default, adjust as needed)
+- Configures merge strategy
 
 Use this for any internal or private repository.
 
