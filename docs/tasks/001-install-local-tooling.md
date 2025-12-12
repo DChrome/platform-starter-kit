@@ -1,13 +1,16 @@
 # Task 001 — Install Local Tooling
 
 ## Intent
+
 Ensure the workstation has the core CLI tools required for local Kubernetes work
 and for later Terraform + AWS tasks. This avoids debugging failures caused by missing tools.
 
 ## Changes
-- Add a short “Local Tooling Requirements” section to `docs/ops-notes.md`.
+
+Add a short “Local Tooling Requirements” section to `docs/ops-notes.md`.
 
 ## Commands
+
 Verify each tool is installed and available:
 
 ```bash
