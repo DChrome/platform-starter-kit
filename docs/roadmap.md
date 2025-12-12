@@ -10,6 +10,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 ---
 
 ## Phase 0 — Foundation & Repo Baseline
+
 - Finalize initial repo layout.
 - Add minimal documentation (architecture, delivery pipeline).
 - Prepare local tooling: kind, kubectl, helm.
@@ -18,6 +19,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 ---
 
 ## Phase 1 — Local Kubernetes Platform (kind)
+
 - Create kind cluster configuration.
 - Install ArgoCD locally.
 - Install Observability stack locally (Prometheus, Grafana).
@@ -27,6 +29,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 ---
 
 ## Phase 2 — Terraform Core Scaffolding
+
 - Configure Terraform remote backends (S3 + DynamoDB) for dev/prod.
 - Define shared provider configuration (`globals/`).
 - Create `plan-*` / `apply-*` / `destroy-*` scripts.
@@ -35,6 +38,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 ---
 
 ## Phase 3 — Core Infra Modules (VPC / IAM / EKS)
+
 - Implement VPC module (minimal, cost-conscious).
 - Implement IAM module (cluster, node groups, optional admin roles).
 - Implement EKS module (cluster + one managed node group).
@@ -44,6 +48,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 ---
 
 ## Phase 4 — GitOps Bootstrap (ArgoCD via Terraform)
+
 - Implement ArgoCD bootstrap module (Helm or manifests).
 - Configure the kubernetes provider inside Terraform.
 - Install ArgoCD automatically during infra apply.
@@ -52,6 +57,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 ---
 
 ## Phase 5 — GitOps Tree + Demo Application
+
 - Define App-of-Apps structure.
 - Add platform apps (Prometheus, Grafana, Loki).
 - Add demo service (Dockerfile + Helm chart + ArgoCD Application).
@@ -60,6 +66,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 ---
 
 ## Phase 6 — CI/CD Automation (GitHub Actions)
+
 - Terraform pipelines for dev/prod.
 - Build & push demo-api container images.
 - GitOps-based image tag bump workflow.
@@ -68,6 +75,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 ---
 
 ## Phase 7 — Hardening, Cost Controls, Refinements
+
 - Add basic network policies.
 - Add resource limits + HPA.
 - Introduce spot node groups (optional).
@@ -77,6 +85,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 ---
 
 ## Phase 8 — Optional Extensions
+
 - Add external-dns + cert-manager.
 - Add Loki + Tempo for full observability.
 - Add example app #2.
@@ -84,4 +93,4 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 
 ---
 
-Roadmap Reviewed: _2025-12-11_  
+Roadmap Reviewed: *2025-12-11*  

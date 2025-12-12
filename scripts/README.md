@@ -7,7 +7,9 @@ auto-detect the repository owner, name, and default branch from the local Git cl
 ## Scripts
 
 ### `bootstrap-base.sh`
+
 Applies a **baseline production profile**:
+
 - Protects the default branch (PRs only, admins included)
 - Enforces resolved conversations
 - Configures merge strategy
@@ -15,7 +17,9 @@ Applies a **baseline production profile**:
 Use this for any internal or private repository.
 
 ### `bootstrap-oss.sh`
+
 Extends the base profile with **open-source policies**:
+
 - Marks the repository as a template
 - Validates presence of recommended OSS files (LICENSE, SECURITY.md, etc.)
 - Prepares the repo for public, MIT-licensed distribution
@@ -44,4 +48,3 @@ or
 
 These scripts are **idempotent**: re-running them will enforce the desired state and
 overwrite manual changes to GitHub protection settings.
-
