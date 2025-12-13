@@ -50,3 +50,14 @@ kubectl get ns
 
 - Cluster name is hard-coded to `psk-local` in `kind.sh` for reproducibility.
 - The cluster is intentionally minimal (1 control-plane + 1 worker). We can scale later if/when needed.
+
+## Install Argo CD
+
+Argo CD is installed as a **local bootstrap** step (day-0 dependency) using a vendored, pinned manifest:
+
+```bash
+./local/k8s/argocd/argocd.sh install
+./local/k8s/argocd/argocd.sh status
+```
+
+See: `local/k8s/argocd/README.md`
