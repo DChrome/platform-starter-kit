@@ -9,6 +9,12 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 
 ---
 
+## Workload Ownership
+
+Workloads are treated as **external consumers of the platform**. The platform repository may include disposable smoke-test fixtures, but real workload codebases live in separate repositories and are integrated via GitOps.
+
+---
+
 ## Phase 0 — Foundation & Repo Baseline
 
 - Finalize initial repo layout.
@@ -23,7 +29,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 - Create kind cluster configuration.
 - Install ArgoCD locally.
 - Install Observability stack locally (Prometheus, Grafana).
-- Ensure GitOps manifests work locally before touching AWS.
+- Ensure GitOps manifests for **platform services and disposable test workloads** work locally before touching AWS.
 - Establish a fast inner dev loop.
 
 ---
@@ -60,7 +66,7 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 
 - Define App-of-Apps structure.
 - Add platform apps (Prometheus, Grafana, Loki).
-- Add demo service (Dockerfile + Helm chart + ArgoCD Application).
+- Integrate an **external demo workload repository** via ArgoCD (Helm or Kustomize), exercising image delivery and GitOps promotion flows.
 - Verify automatic sync in dev environment.
 
 ---
@@ -93,4 +99,4 @@ Individual tasks live in `docs/tasks/` and evolve incrementally.
 
 ---
 
-Roadmap Reviewed: *2025-12-11*  
+Roadmap Reviewed: *2025-12-13*  
