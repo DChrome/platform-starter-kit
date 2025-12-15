@@ -61,3 +61,13 @@ Argo CD is installed as a **local bootstrap** step (day-0 dependency) using a ve
 ```
 
 See: `local/k8s/argocd/README.md`
+
+## Observability (Prometheus + Grafana)
+
+Bring up a minimal local metrics + dashboards baseline (Prometheus, kube-state-metrics, Grafana).
+
+```bash
+./local/k8s/observability/observability.sh install
+```
+
+See: `local/k8s/observability/README.md`
