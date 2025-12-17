@@ -198,55 +198,125 @@ kind: ClusterRole
 metadata:
   name: kube-state-metrics
 rules:
-  - apiGroups: [""]
+  - apiGroups:
+      - ""
     resources:
-      - namespaces
+      - configmaps
+      - secrets
       - nodes
       - pods
       - services
-      - endpoints
+      - serviceaccounts
       - resourcequotas
       - replicationcontrollers
       - limitranges
       - persistentvolumeclaims
       - persistentvolumes
-      - configmaps
-      - secrets
-    verbs: ["list", "watch"]
-  - apiGroups: ["apps"]
+      - namespaces
+      - endpoints
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - apps
     resources:
+      - statefulsets
       - daemonsets
       - deployments
       - replicasets
-      - statefulsets
-    verbs: ["list", "watch"]
-  - apiGroups: ["batch"]
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - batch
     resources:
       - cronjobs
       - jobs
-    verbs: ["list", "watch"]
-  - apiGroups: ["autoscaling"]
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - autoscaling
     resources:
       - horizontalpodautoscalers
-    verbs: ["list", "watch"]
-  - apiGroups: ["policy"]
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - authentication.k8s.io
+    resources:
+      - tokenreviews
+    verbs:
+      - create
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - subjectaccessreviews
+    verbs:
+      - create
+  - apiGroups:
+      - policy
     resources:
       - poddisruptionbudgets
-    verbs: ["list", "watch"]
-  - apiGroups: ["coordination.k8s.io"]
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - certificates.k8s.io
     resources:
-      - leases
-    verbs: ["list", "watch"]
-  - apiGroups: ["networking.k8s.io"]
+      - certificatesigningrequests
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - discovery.k8s.io
     resources:
-      - ingresses
-      - networkpolicies
-    verbs: ["list", "watch"]
-  - apiGroups: ["storage.k8s.io"]
+      - endpointslices
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - storage.k8s.io
     resources:
       - storageclasses
       - volumeattachments
-    verbs: ["list", "watch"]
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - admissionregistration.k8s.io
+    resources:
+      - mutatingwebhookconfigurations
+      - validatingwebhookconfigurations
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - networkpolicies
+      - ingressclasses
+      - ingresses
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - clusterrolebindings
+      - clusterroles
+      - rolebindings
+      - roles
+    verbs:
+      - list
+      - watch
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
