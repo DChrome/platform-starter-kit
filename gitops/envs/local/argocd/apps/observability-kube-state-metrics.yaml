@@ -1,0 +1,31 @@
+# Local env: kube-state-metrics (Helm via ArgoCD)
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: observability-kube-state-metrics
+  namespace: argocd
+  labels:
+    psk.dev/env: local
+    psk.dev/component: observability
+    psk.dev/service: kube-state-metrics
+    psk.dev/managed-by: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: kube-state-metrics
+      targetRevision: 7.0.0
+      helm:
+        releaseName: kube-state-metrics
+        valueFiles:
+          - $values/gitops/platform/observability/kube-state-metrics/values/common.yaml
+          - $values/gitops/envs/local/values/kube-state-metrics.yaml
+    - repoURL: https://github.com/DChrome/platform-starter-kit.git
+      targetRevision: feat/task-006
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

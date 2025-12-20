@@ -1,0 +1,33 @@
+# Local overrides for Prometheus (kind)
+
+alertmanager:
+  enabled: false
+
+prometheus-pushgateway:
+  enabled: false
+
+prometheus-node-exporter:
+  enabled: false
+
+kube-state-metrics:
+  enabled: false
+
+server:
+  persistentVolume:
+    enabled: false
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+  global:
+    scrape_interval: 15s
+    evaluation_interval: 15s
+
+# Minimal scrape config (Phase 1) to include kube-state-metrics.
+extraScrapeConfigs: |
+  - job_name: kube-state-metrics
+    static_configs:
+      - targets:
+          - kube-state-metrics.monitoring.svc.cluster.local:8080

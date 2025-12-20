@@ -1,0 +1,6 @@
+# Local overrides for kube-state-metrics (kind)
+
+resources:
+  requests:
+    cpu: 25m
+    memory: 64Mi
