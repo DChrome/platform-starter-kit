@@ -19,7 +19,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/DChrome/platform-starter-kit.git
-    targetRevision: feat/task-006
+    targetRevision: master
     path: gitops/envs/local
   destination:
     server: https://kubernetes.default.svc

@@ -21,7 +21,7 @@ spec:
           - $values/gitops/platform/observability/prometheus/values/common.yaml
           - $values/gitops/envs/local/values/prometheus.yaml
     - repoURL: https://github.com/DChrome/platform-starter-kit.git
-      targetRevision: feat/task-006
+      targetRevision: master
       ref: values
   destination:
     server: https://kubernetes.default.svc
