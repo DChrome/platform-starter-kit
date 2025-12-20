@@ -1,5 +1,8 @@
 # Local overrides for Grafana (kind)
 
+# Local-only: deterministic password to avoid GitOps drift. Do not copy to dev/prod.
+adminPassword: local-admin
+
 persistence:
   enabled: false
 
