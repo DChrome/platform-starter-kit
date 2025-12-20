@@ -1,0 +1,29 @@
+# Root ArgoCD Application for the local environment.
+#
+# IMPORTANT:
+# - Set spec.source.repoURL to a required repository URL.
+#   Example:
+#     git remote get-url origin
+# - Set targetRevision to the default branch if it's not "main".
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-local
+  namespace: argocd
+  labels:
+    psk.dev/env: local
+    psk.dev/managed-by: argocd
+    psk.dev/component: root
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/DChrome/platform-starter-kit.git
+    targetRevision: master
+    path: gitops/envs/local
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

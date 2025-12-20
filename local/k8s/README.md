@@ -62,6 +62,14 @@ Argo CD is installed as a **local bootstrap** step (day-0 dependency) using a ve
 
 See: `local/k8s/argocd/README.md`
 
+## GitOps ownership (ArgoCD)
+
+After ArgoCD is installed, register the local GitOps entrypoint:
+
+```bash
+kubectl apply -n argocd -f gitops/envs/local/argocd/root.yaml
+```
+
 ## Observability (Prometheus + Grafana)
 
 Bring up a minimal local metrics + dashboards baseline (Prometheus, kube-state-metrics, Grafana).

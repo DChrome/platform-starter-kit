@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Environment composition root.
+#
+# Applied by the env root ArgoCD Application (gitops/envs/local/argocd/root.yaml).
+resources:
+  - argocd/apps/observability-prometheus.yaml
+  - argocd/apps/observability-grafana.yaml
+  - argocd/apps/observability-kube-state-metrics.yaml

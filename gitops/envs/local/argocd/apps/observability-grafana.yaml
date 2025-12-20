@@ -1,0 +1,35 @@
+# Local env: Grafana (Helm via ArgoCD)
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: observability-grafana
+  namespace: argocd
+  labels:
+    psk.dev/env: local
+    psk.dev/component: observability
+    psk.dev/service: grafana
+    psk.dev/managed-by: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: grafana
+      targetRevision: 10.4.0
+      helm:
+        releaseName: grafana
+        valueFiles:
+          - $values/gitops/platform/observability/grafana/values/common.yaml
+          - $values/gitops/envs/local/values/grafana.yaml
+    - repoURL: https://github.com/DChrome/platform-starter-kit.git
+      targetRevision: master
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true

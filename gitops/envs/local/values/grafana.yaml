@@ -1,0 +1,28 @@
+# Local overrides for Grafana (kind)
+
+# Local-only: deterministic password to avoid GitOps drift. Do not copy to dev/prod.
+adminPassword: local-admin
+
+persistence:
+  enabled: false
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+
+# Configure a default Prometheus datasource pointing at the Prometheus chart service.
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        uid: prometheus
+        type: prometheus
+        access: proxy
+        url: http://prometheus-server.monitoring.svc
+        isDefault: true
+        editable: false
