@@ -21,7 +21,7 @@ spec:
           - $values/gitops/platform/observability/grafana/values/common.yaml
           - $values/gitops/envs/local/values/grafana.yaml
     - repoURL: https://github.com/DChrome/platform-starter-kit.git
-      targetRevision: master
+      targetRevision: HEAD
       ref: values
   destination:
     server: https://kubernetes.default.svc
