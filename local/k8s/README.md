@@ -96,11 +96,25 @@ See: `local/k8s/observability/README.md`
 
 ### Force ArgoCD to re-read Git (use after manifest / branch changes)
 
+ArgoCD has **two distinct mechanisms**:
+
+- **Sync**
+  Applies desired state *already rendered* by ArgoCD.
+
+- **Refresh**
+  Forces ArgoCD to:
+
+  - re-fetch Git
+  - re-render manifests
+  - re-evaluate Application definitions
+
+Force a hard refresh with:
+
 ```bash
 ./local/k8s/gitops/refresh.sh
 ```
 
-### Test a branch locally (no Git changes)
+### Test a branch locally
 
 ```bash
 ./local/k8s/gitops/use-branch.sh            # current branch
