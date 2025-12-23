@@ -34,12 +34,13 @@ Workloads are treated as **external consumers of the platform**. The platform re
 
 ---
 
-## Phase 2 — Terraform Core Scaffolding
+## Phase 2 — Terraform Foundations (Zero-Cost)
 
-- Configure Terraform remote backends (S3 + DynamoDB) for dev/prod.
-- Define shared provider configuration (`globals/`).
-- Create `plan-*` / `apply-*` / `destroy-*` scripts.
-- Sanity-check Terraform plan/apply workflows (empty infra).
+- Define strict Terraform repository structure and root/module contracts
+- Establish deterministic local workflows (`fmt`, `validate`, `plan`, `test`) with guardrails
+- Introduce IaC testing using `terraform test` with mocks (no cloud providers)
+- Add baseline static checks and CI enforcement for Terraform code
+- Ensure all Phase 2 code is fully executable and testable locally, with no cloud dependencies
 
 ---
 
@@ -99,4 +100,4 @@ Workloads are treated as **external consumers of the platform**. The platform re
 
 ---
 
-Roadmap Reviewed: *2025-12-13*  
+Roadmap Reviewed: *2025-12-23*  
