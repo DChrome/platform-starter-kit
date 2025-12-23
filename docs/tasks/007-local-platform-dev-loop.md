@@ -11,12 +11,12 @@ After this task:
 
 * Platform operators can quickly:
 
-  * inspect ArgoCD state,
-  * verify observability health,
-  * access UIs,
-  * switch branches for local testing.
-* ArgoCD refresh vs sync behavior is explicit and documented.
-* Local branch testing is supported.
+  * inspect ArgoCD state
+  * verify observability health
+  * access UIs
+  * switch branches for local testing
+
+* ArgoCD refresh vs sync behavior is explicit and documented
 
 ---
 
@@ -39,11 +39,11 @@ After this task:
 ### Modify — Documentation
 
 * `local/k8s/README.md`
-  Add a **“Local platform operator loop”** section describing:
+  Add a **Local platform operator loop** section describing:
 
-  * supported workflows,
-  * refresh vs sync semantics,
-  * branch-based local testing.
+  * supported workflows
+  * refresh vs sync semantics
+  * branch-based local testing
 
 ---
 
@@ -57,11 +57,9 @@ targetRevision: HEAD
 
 This ensures:
 
-* independence from `master` vs `main`,
-* predictable behavior across environments,
-* no branch-specific state stored in Git.
-
-Branch selection for local testing is an **operator action**, not a declarative environment change.
+* independence from `master` vs `main`
+* predictable behavior across environments
+* no branch-specific state stored in Git
 
 ---
 
@@ -121,8 +119,7 @@ This task is complete when:
 
 Without this task:
 
-* ArgoCD behavior appears inconsistent (sync vs refresh),
-* local iteration feels slow,
-* developers are tempted to encode branch logic in Git.
+* local iteration feels slow
+* developers are tempted to encode branch logic in Git
 
 This task ensures the **correct GitOps path is also the fastest path**.
