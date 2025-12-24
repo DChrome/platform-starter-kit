@@ -173,6 +173,6 @@ If a single ArgoCD instance later manages multiple clusters, Application names m
 
 Each ArgoCD Application should include lightweight labels for traceability and future automation:
 
-* `psk.dev/env: local`
-* `psk.dev/component: observability`
-* `psk.dev/managed-by: argocd`
+* `psk/env: local`
+* `psk/component: observability`
+* `psk/managed-by: argocd`

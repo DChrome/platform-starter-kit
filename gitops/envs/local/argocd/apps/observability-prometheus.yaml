@@ -5,10 +5,10 @@ metadata:
   name: observability-prometheus
   namespace: argocd
   labels:
-    psk.dev/env: local
-    psk.dev/component: observability
-    psk.dev/service: prometheus
-    psk.dev/managed-by: argocd
+    psk/env: local
+    psk/component: observability
+    psk/service: prometheus
+    psk/managed-by: argocd
 spec:
   project: default
   sources:
