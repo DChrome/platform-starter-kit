@@ -44,7 +44,17 @@ Workloads are treated as **external consumers of the platform**. The platform re
 
 ---
 
-## Phase 3 — Core Infra Modules (VPC / IAM / EKS)
+## Phase 3 — AWS Bootstrap & Terraform State
+
+- Establish a minimal AWS footprint for Terraform state management.
+- Configure remote Terraform state for dev (S3-native locking).
+- Define a safe, explicit provider/bootstrap pattern.
+- Introduce standard plan/apply/destroy workflows against remote state.
+- Validate end-to-end Terraform workflows with empty infrastructure.
+
+---
+
+## Phase 4 — Core Infra Modules (VPC / IAM / EKS)
 
 - Implement VPC module (minimal, cost-conscious).
 - Implement IAM module (cluster, node groups, optional admin roles).
@@ -54,7 +64,7 @@ Workloads are treated as **external consumers of the platform**. The platform re
 
 ---
 
-## Phase 4 — GitOps Bootstrap (ArgoCD via Terraform)
+## Phase 5 — GitOps Bootstrap (ArgoCD via Terraform)
 
 - Implement ArgoCD bootstrap module (Helm or manifests).
 - Configure the kubernetes provider inside Terraform.
@@ -63,7 +73,7 @@ Workloads are treated as **external consumers of the platform**. The platform re
 
 ---
 
-## Phase 5 — GitOps Tree + Demo Application
+## Phase 6 — GitOps Tree + Demo Application
 
 - Define App-of-Apps structure.
 - Add platform apps (Prometheus, Grafana, Loki).
@@ -72,7 +82,7 @@ Workloads are treated as **external consumers of the platform**. The platform re
 
 ---
 
-## Phase 6 — CI/CD Automation (GitHub Actions)
+## Phase 7 — CI/CD Automation (GitHub Actions)
 
 - Terraform pipelines for dev/prod.
 - Build & push demo-api container images.
@@ -81,7 +91,7 @@ Workloads are treated as **external consumers of the platform**. The platform re
 
 ---
 
-## Phase 7 — Hardening, Cost Controls, Refinements
+## Phase 8 — Hardening, Cost Controls, Refinements
 
 - Add basic network policies.
 - Add resource limits + HPA.
@@ -91,7 +101,7 @@ Workloads are treated as **external consumers of the platform**. The platform re
 
 ---
 
-## Phase 8 — Optional Extensions
+## Phase 9 — Optional Extensions
 
 - Add external-dns + cert-manager.
 - Add Loki + Tempo for full observability.
@@ -100,4 +110,4 @@ Workloads are treated as **external consumers of the platform**. The platform re
 
 ---
 
-Roadmap Reviewed: *2025-12-23*  
+Roadmap Reviewed: *2025-12-25*  
